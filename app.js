@@ -15,10 +15,49 @@ console.log(testingFunction);
 
 //selecting each place and store in some way
 //generating the trip first
+let userTripArray = [];
 
 let userDestination = randomSelect(destinations);
 let userResteraunts = randomSelect(resteraunts);
 let userTransportaion = randomSelect(transportation);
-let userEntertainment = randomSelect(entertainment);            
+let userEntertainment = randomSelect(entertainment);  
 
-console.log(`Your destinations is ${userDestination}, and your means of transportation is ${userTransporation}.`);
+userTripArray[0] = userDestination;
+userTripArray[1] = userResteraunts;
+userTripArray[2] = userTransportaion;
+userTripArray[3] = userEntertainment;
+
+console.log(`Your destinations is ${userDestination}, and your transportation is ${userTransportaion}.`);
+
+//prompting user for reselect
+let userSelect = prompt("Would you like to change your trip?");
+if(userSelect == "Yes"){
+    reSelectDestination(userTripArray);
+    displayTrip(userTripArray);
+    console.log("Your trip has been changed.");
+} else{
+    console.log("Your trip has been confirmed!");
+}
+
+
+//let reselect;
+// while(reselect = true){
+//     let userPrompt = prompt("Would you like to change anything in your trip?");
+//     if(userPrompt = "Yes"){
+//         console.log("Your trip has changed.");
+//     }else{
+//         break;
+//     }
+// }
+
+//reselecting options method
+function reSelectDestination(array){
+    array[0] = randomSelect(destinations);
+    return array;
+}
+
+function displayTrip(array){
+    for(let i = 0; i < array.length; i++){
+        console.log(array[i]);
+    }
+}
